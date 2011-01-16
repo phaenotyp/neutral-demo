@@ -1,0 +1,22 @@
+<% title "Comments" %>
+
+<table>
+  <tr>
+    <th>Body</th>
+  </tr>
+  <% for comment in @comments %>
+    <tr>
+      <td><%= comment.body %></td>
+      <td><%= link_to "Show", comment %></td>
+	  <% if permitted_to? :edit, @comment %>
+      	<td><%= link_to "Edit", edit_comment_path(comment) %></td>
+	  <% end %>
+	<% if permitted_to? :destroy, @comment %>
+      <td><%= link_to "Destroy", comment, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+    </tr>
+  <% end %>
+</table>
+<% if permitted_to? :new, @comment %>
+	<p><%= link_to "New Comment", new_comment_path %></p>
+<%end%>

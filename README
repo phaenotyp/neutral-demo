@@ -1,0 +1,15 @@
+== Getting Started
+
+init git
+Edit gemfile
+bundle install
+git commit
+create first model
+git comit
+install devise
+change routes
+generate devise user
+git commit
+Add authorization by "declarative authorization"
+bundle install "omniauth"
+Sign up and Sign in via Twitter and Omniauth now possible

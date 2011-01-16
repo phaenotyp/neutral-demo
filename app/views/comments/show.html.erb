@@ -1,0 +1,16 @@
+<% title "Comment" %>
+
+<p>
+  <strong>Body:</strong>
+  <%= @comment.body %>
+</p>
+
+<ul>
+	<% if permitted_to? :edit, @comment %>
+		<li><%= link_to "Edit", edit_comment_path(@comment) %> |</li>
+	<%end%>
+	<% if permitted_to? :destroy, @comment %>
+		<li><%= link_to "Destroy", @comment, :confirm => 'Are you sure?', :method => :delete %> |</li>
+	<%end%>
+	<li><%= link_to "View All", comments_path %></li>
+</ul>
