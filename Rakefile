@@ -3,5 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
-
-Digidemo::Application.load_tasks
+#new app name
+neutral-demo::Application.load_tasks
