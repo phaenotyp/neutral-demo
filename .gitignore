@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/database.yml
+config/private.yml
+config/initializers/development_mail.rb
+db/schema.rb
+public/assets
