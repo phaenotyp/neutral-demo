@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 #new app name
-neutral-demo::Application.load_tasks
+NeutralDemo::Application.load_tasks
