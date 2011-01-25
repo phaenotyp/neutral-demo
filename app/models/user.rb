@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :authentications
-  before_create :assign_member_role
+  before_create :create_login, :assign_member_role
+  
 
   
   # Include default devise modules. Others available are:
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :user_name
   
   
   def role_symbols
@@ -30,10 +31,24 @@ class User < ActiveRecord::Base
     (authentications.empty? || !password.blank?) && super
   end
   
+  def create_login             
+    email = self.email.split(/@/)
+    login_taken = User.where( :user_name => email[0]).first
+    unless login_taken
+      self.user_name = email[0]
+    else	
+      self.user_name = self.email
+    end	       
+  end
+
   private
+
+  def self.find_for_database_authentication(conditions)
+    self.where(:user_name => conditions[:email]).first || self.where(:email => conditions[:email]).first
+  end
   
   def assign_member_role
-    member_role = Role.find_by_name("member")
+    member_role = Role.find_by_name("member") || Role.create(:name => "member")
     self.roles = [member_role]
-  end  
+  end 
 end

@@ -11,6 +11,7 @@ gem 'devise'
 gem 'declarative_authorization'
 gem 'omniauth'
 gem 'mongrel', '1.2.0.pre2'
+gem 'compass'
 
 # Use unicorn as the web server
 # gem 'unicorn'

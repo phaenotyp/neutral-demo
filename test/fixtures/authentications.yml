@@ -1,9 +1,9 @@
 one:
   user_id: 1
-  provider: MyString
-  uid: MyString
+  provider: Twitter
+  uid: test@yahoo.de
 
 two:
   user_id: 1
-  provider: MyString
-  uid: MyString
+  provider: google
+  uid: test@googlemail.com
